@@ -24,7 +24,7 @@ router.get('/',FacultyController.getAllFaculties);
 
 router.get('/:id', FacultyController.getSingleFaculty);
 
-router.patch(('/:id', 
+router.patch('/:id', 
   validateRequest( FacultyController.updateFacultyZodSchema),
   FacultyController.updateFaculty
 );
