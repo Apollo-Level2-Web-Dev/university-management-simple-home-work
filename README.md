@@ -15,7 +15,7 @@ router.post(
 ```
 ### Things to do
 
-- Generate a utility function to create admin incremental id. Pattern `F-00001`
+- Generate a utility function to create faculty incremental id. Pattern `F-00001`
 
 #### Root route should be `api/v1/faculties`.
 
