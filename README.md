@@ -22,7 +22,7 @@ router.post(
 ```typescript
 router.get('/',FacultyController.getAllFaculties);
 
-router.get('/:id', FacultyController.getFaculty);
+router.get('/:id', FacultyController.getSingleFaculty);
 
 router.patch(('/:id', 
   validateRequest( FacultyController.updateFacultyZodSchema),
