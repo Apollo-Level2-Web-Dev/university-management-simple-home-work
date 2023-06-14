@@ -1,23 +1,136 @@
-# university-management-simple-home-work
-## Practice Task: Complete Faculty Module
+# Practice Task: Complete Faculty (As a User) Module 
 
-1. Generate faculty utility function to create faculty incremental id.
-   - Pattern: F-00001
+Do not forget to add routes in `routes/index.ts` file.
 
-2. Create `/create-faculty` route in `user.route.ts` file.
+### Create routes, controllers ,services,constants,validation , utils for  the admin module  given below
 
-3. Validate Create Faculty Request in router level.
+#### Root route should be `api/v1/users`.
 
-4. Create Faculty controller and service in `user.controller.ts` & `user.service.ts`.
+```typescript
+router.post(
+  '/create-faculty',
+  validateRequest(FacultyController.createFacultyZodSchema),
+  FacultyController.createFaculty)
+);
+```
+### Things to do
 
-5. Create API End Points in `faculty.route.ts` given below (Do not forget to add it in `routes/index.ts` file):
-   - `/api/v1/faculties` (GET) → Get all faculties, implement filtering and pagination, populate reference field.
-   - `/api/v1/faculties/:id` (GET) → Get individual faculty by ID and populate reference field.
-   - `/api/v1/faculties/:id` (PATCH) → Update faculty data dynamically.
-   - `/api/v1/faculties/:id` (DELETE) → Delete individual faculty.
+- Generate a utility function to create admin incremental id. Pattern `F-00001`
 
-6. Validate Update request using Zod schema.
+#### Root route should be `api/v1/faculties`.
 
-7. Create faculty controllers and services.
+```typescript
+router.get('/',FacultyController.getAllFaculties);
 
-8. Test APIs and Create Data.
+router.get('/:id', FacultyController.getFaculty);
+
+router.patch(('/:id', 
+  validateRequest( FacultyController.updateFacultyZodSchema),
+  FacultyController.updateFaculty
+);
+```
+
+
+### Faculty
+- _id: ObjectID
+-  id: string;
+-  name:
+    -  firstName
+    -  middleName (optional)
+    -  lastName
+-  dateOfBirth
+-  email
+-  contactNo
+-  emergencyContactNo
+-  gender
+-  permanentAddress  
+-  presentAddress
+-  bloodGroup (optional)
+-  designation
+-  academicDepartment ( reference )
+-  academicFaculty ( reference )
+-  profileImage (optional)
+-  createdAt
+-  updatedAt
+
+#### Sample Data
+
+```json
+{
+  "_id":ObjectId("6425c04cc4edab97a3ebc749")
+  "id": "F-00002",
+  "name": {
+    "firstName": "Mezbaul ",
+    "lastName": "Persian",
+    "middleName": "Abedin"
+  },
+  "dateOfBirth": "24-04-1998",
+  "gender": "male",
+  "bloodGroup": "O+",
+  "email": "mezbaul@gmail.com",
+  "contactNo": "01800000006",
+  "emergencyContactNo": "01800000006",
+  "presentAddress": "ctg",
+  "permanentAddress": "ctg",
+  "designation": "Lecturer",
+  "academicDepartment":"6429e7d524d69a1815cc37f7",
+  "academicFaculty":"6429f04b3c14b1f9a7c2d97a",
+  "profileImage": "https://via.placeholder.com/150x150",
+  "createdAt": "2023-05-31T14:42:22.747Z",
+  "updatedAt": "2023-06-01T08:54:57.058Z"
+}
+```
+
+
+#### Sample Data (After Populate)
+
+```json
+{
+  "_id":ObjectId("6425c04cc4edab97a3ebc749")
+  "id": "F-00002",
+  "name": {
+    "firstName": "Mezbaul ",
+    "lastName": "Persian",
+    "middleName": "Abedin"
+  },
+  "dateOfBirth": "24-04-1998",
+  "gender": "male",
+  "bloodGroup": "O+",
+  "email": "mezbaul@gmail.com",
+  "contactNo": "01800000006",
+  "emergencyContactNo": "01800000006",
+  "presentAddress": "ctg",
+  "permanentAddress": "ctg",
+  "designation": "Lecturer",
+  "academicDepartment": {
+    "_id": "6429e7d524d69a1815cc37f7",
+    "title": "Department of Computer Science and Engineering",
+    "createdAt": "2023-05-28T21:24:53.677Z",
+    "updatedAt": "2023-05-28T21:24:53.677Z"
+  },
+  "academicFaculty": {
+    "_id": "6429f04b3c14b1f9a7c2d97a",
+    "title": "Faculty of Science and Engineering",
+    "createdAt": "2023-05-28T21:24:53.677Z",
+    "updatedAt": "2023-05-28T21:24:53.677Z"
+  },
+  "profileImage": "https://via.placeholder.com/150x150",
+  "createdAt": "2023-05-31T14:42:22.747Z",
+  "updatedAt": "2023-06-01T08:54:57.058Z"
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
