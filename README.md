@@ -51,7 +51,7 @@ router.patch('/:id',
 -  academicFaculty ( reference )
 -  profileImage (optional)
 -  createdAt
--  updatedAt
+
 
 #### Sample Data
 
